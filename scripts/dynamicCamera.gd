@@ -9,8 +9,5 @@ func _ready():
 
 func _input(_event):
 	var desiredPos =  MovingCross.viewCenter - MovingCross.mousePos
-	print(desiredPos)
 	h_offset =- (desiredPos.x/150 - h_offset) * CAM_WEIGHT
 	v_offset =+ (desiredPos.y/150 - v_offset) * CAM_WEIGHT
-	
-
