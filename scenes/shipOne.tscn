@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://biw0b2ojys48f"]
+
+[ext_resource type="PackedScene" uid="uid://evpn8e8kbhf2" path="res://blender/spaceshiptest1.blend" id="1_8qwqd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqrsd"]
+emission_enabled = true
+emission = Color(0.961392, 0.649507, 0.542822, 1)
+emission_energy_multiplier = 17.4
+grow_amount = 16.0
+use_point_size = true
+point_size = 2.0
+
+[sub_resource type="PointMesh" id="PointMesh_t7e3d"]
+material = SubResource("StandardMaterial3D_nqrsd")
+
+[node name="ship" instance=ExtResource("1_8qwqd")]
+
+[node name="mainThrust" type="CPUParticles3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0485333, 1.7372, 11.3091)
+cast_shadow = 0
+amount = 1000
+lifetime = 0.03
+draw_order = 1
+mesh = SubResource("PointMesh_t7e3d")
+emission_shape = 3
+emission_box_extents = Vector3(1.93, 0.145, 0)
+direction = Vector3(0, 0, 0)
+spread = 94.55
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 0.6
+angle_min = -618.3
+
+[node name="sideThrust1" type="CPUParticles3D" parent="." index="3"]
+transform = Transform3D(0.984, -0.178165, -0.000744645, 0.178165, 0.984001, -1.13447e-05, 0.000734751, -0.000121515, 1, -4.53943, 1.74224, 12.6882)
+cast_shadow = 0
+amount = 1000
+lifetime = 0.03
+draw_order = 1
+mesh = SubResource("PointMesh_t7e3d")
+emission_shape = 3
+emission_box_extents = Vector3(0.875, 0.495, 0)
+direction = Vector3(0, 0, 0)
+spread = 8.9
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 0.4
+angle_min = -618.3
+
+[node name="sideThrust2" type="CPUParticles3D" parent="." index="4"]
+transform = Transform3D(0.987032, 0.160521, -0.000730103, -0.160521, 0.987032, -0.000146881, 0.000697062, 0.000262165, 1, 4.45998, 1.73217, 12.6949)
+cast_shadow = 0
+amount = 1000
+lifetime = 0.03
+draw_order = 1
+mesh = SubResource("PointMesh_t7e3d")
+emission_shape = 3
+emission_box_extents = Vector3(0.875, 0.495, 0)
+direction = Vector3(0, 0, 0)
+spread = 8.9
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 0.4
+angle_min = -618.3
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7433, 15.6113)
+light_energy = 2.371

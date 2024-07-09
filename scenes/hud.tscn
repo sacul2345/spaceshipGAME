@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://chi2jrwekr1is"]
+
+[ext_resource type="Texture2D" uid="uid://bt1b023h0w6sr" path="res://textures/KovaaK-Crosshair.png" id="1_b8jdb"]
+[ext_resource type="Texture2D" uid="uid://c6ltdpqvxs3ib" path="res://textures/KovaaK-Crosshair (1).png" id="2_m7amk"]
+[ext_resource type="Script" path="res://scripts/movingCross.gd" id="3_h56q6"]
+
+[node name="Hud" type="CanvasLayer"]
+
+[node name="centerCross" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.06, 3.06)
+pivot_offset = Vector2(1, 1)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("1_b8jdb")
+stretch_mode = 4
+
+[node name="movingCross" type="TextureRect" parent="." node_paths=PackedStringArray("centerCross")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(12.5, 12.5)
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture = ExtResource("2_m7amk")
+expand_mode = 1
+script = ExtResource("3_h56q6")
+centerCross = NodePath("../centerCross")
