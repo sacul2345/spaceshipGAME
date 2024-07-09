@@ -1,14 +1,24 @@
-[gd_scene load_steps=15 format=3 uid="uid://bncti2a7t877h"]
+[gd_scene load_steps=18 format=3 uid="uid://bncti2a7t877h"]
 
 [ext_resource type="PackedScene" uid="uid://biw0b2ojys48f" path="res://scenes/shipOne.tscn" id="1_pkjap"]
 [ext_resource type="Script" path="res://scripts/moveShip.gd" id="1_ukx4p"]
 [ext_resource type="Texture2D" uid="uid://mu4vnfq08ia6" path="res://textures/HDR_blue_local_star.hdr" id="2_rs8yv"]
 [ext_resource type="Script" path="res://scripts/dynamicCamera.gd" id="3_f4k6y"]
+[ext_resource type="Script" path="res://scenes/spaceDust.gd" id="4_0qn0y"]
 [ext_resource type="PackedScene" uid="uid://evpn8e8kbhf2" path="res://blender/spaceshiptest1.blend" id="4_34ecb"]
 [ext_resource type="Texture2D" uid="uid://bpvot7pmxcdgn" path="res://textures/4k_haumea_fictional.jpg" id="6_m0acr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8wen1"]
 size = Vector3(5.66, 0.901, 6.976)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n3mub"]
+emission_enabled = true
+emission = Color(0.454524, 0.454524, 0.454524, 1)
+use_point_size = true
+point_size = 1.5
+
+[sub_resource type="PointMesh" id="PointMesh_rs07s"]
+material = SubResource("StandardMaterial3D_n3mub")
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kvkr1"]
 panorama = ExtResource("2_rs8yv")
@@ -71,6 +81,18 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.785, -4.49126)
 transform = Transform3D(0.998441, -2.72848e-12, -3.37604e-09, 0, 0.998438, -3.49246e-09, 0, 2.32831e-10, 0.998447, -1.86265e-09, 2.655, 6.239)
 current = true
 script = ExtResource("3_f4k6y")
+
+[node name="spaceDust" type="CPUParticles3D" parent="PlayerContainer/shipBody" node_paths=PackedStringArray("shipRigidBody")]
+transform = Transform3D(1, -3.18323e-12, 1.74623e-09, -4.54747e-13, 0.999999, -6.98492e-10, -1.16415e-09, -9.31323e-10, 0.999999, 0.0376071, 2.69593, -21.8463)
+cast_shadow = 0
+amount = 500
+mesh = SubResource("PointMesh_rs07s")
+emission_shape = 3
+emission_box_extents = Vector3(20, 20, 20)
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+script = ExtResource("4_0qn0y")
+shipRigidBody = NodePath("..")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7t01e")
