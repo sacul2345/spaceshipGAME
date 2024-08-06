@@ -7,7 +7,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if(shipRigidBody != null):
 		if(shipRigidBody.linear_velocity.length() > 40):
 			emitting = true
