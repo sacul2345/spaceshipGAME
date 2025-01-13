@@ -52,7 +52,7 @@ edge_fade = 2.98572
 environment = SubResource("Environment_7t01e")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(-0.812171, -0.319927, 0.487878, -0.253652, 0.9467, 0.198546, -0.525394, 0.0375015, -0.850032, 0, 3.22925, 0)
+transform = Transform3D(-0.800715, -0.361123, 0.47796, -0.248161, 0.926149, 0.284015, -0.545226, 0.108804, -0.831198, 0, 3.22925, 0)
 light_color = Color(0.855147, 0.926897, 1, 1)
 light_energy = 1.08
 light_indirect_energy = 0.0
