@@ -50,6 +50,7 @@ script = ExtResource("4_56cex")
 [node name="spaceDust" type="CPUParticles3D" parent="shipBody" node_paths=PackedStringArray("shipRigidBody")]
 transform = Transform3D(1, -4.51597e-12, 2.98932e-09, 4.80348e-13, 0.999999, -2.18113e-10, -1.57539e-09, -1.4967e-09, 0.999999, 0.0375986, 9.33296, -21.8267)
 cast_shadow = 0
+emitting = false
 amount = 500
 mesh = SubResource("PointMesh_rs07s")
 emission_shape = 3
