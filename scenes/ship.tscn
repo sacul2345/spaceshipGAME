@@ -15,10 +15,11 @@ size = Vector3(5.66, 0.901, 6.976)
 emission_enabled = true
 emission = Color(0.454524, 0.454524, 0.454524, 1)
 use_point_size = true
-point_size = 1.5
+point_size = 4.0
 
 [sub_resource type="PointMesh" id="PointMesh_rs07s"]
 material = SubResource("StandardMaterial3D_n3mub")
+custom_aabb = AABB(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 
 [node name="Ship" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0271521, 0.0150385, -0.0193691)
@@ -46,17 +47,18 @@ transform = Transform3D(1, -1.87535e-13, 1.57339e-10, -9.34874e-13, 1, 7.38078e-
 target_position = Vector3(2.08165e-12, 2.08165e-12, -1000)
 script = ExtResource("4_56cex")
 
-[node name="spaceDust" type="CPUParticles3D" parent="shipBody"]
+[node name="spaceDust" type="CPUParticles3D" parent="shipBody" node_paths=PackedStringArray("shipRigidBody")]
 transform = Transform3D(1, -4.51597e-12, 2.98932e-09, 4.80348e-13, 0.999999, -2.18113e-10, -1.57539e-09, -1.4967e-09, 0.999999, 0.0375986, 9.33296, -21.8267)
 cast_shadow = 0
-emitting = false
 amount = 500
 mesh = SubResource("PointMesh_rs07s")
 emission_shape = 3
 emission_box_extents = Vector3(20, 20, 20)
 direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
+scale_amount_max = 100.0
 script = ExtResource("4_anfqm")
+shipRigidBody = NodePath("..")
 
 [node name="Weapons" type="Node3D" parent="shipBody"]
 transform = Transform3D(0.998439, -1.26921e-06, -0.00171829, -3.81076e-06, 0.998434, -0.00295178, 0.0017183, 0.0029518, 0.998441, 0, 0, 0)
