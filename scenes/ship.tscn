@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://dfm20dycpgf7y"]
 
-[ext_resource type="Script" path="res://scripts/moveShip.gd" id="1_bdwil"]
+[ext_resource type="Script" uid="uid://d3m74lgrscxdv" path="res://scripts/moveShip.gd" id="1_bdwil"]
 [ext_resource type="PackedScene" uid="uid://biw0b2ojys48f" path="res://scenes/shipOne.tscn" id="2_rqaq0"]
-[ext_resource type="Script" path="res://scripts/dynamicCamera.gd" id="3_vqv25"]
-[ext_resource type="Script" path="res://scenes/ViewRayCast.gd" id="4_56cex"]
-[ext_resource type="Script" path="res://scenes/spaceDust.gd" id="4_anfqm"]
-[ext_resource type="Script" path="res://scenes/Weapons.gd" id="6_o6kr3"]
+[ext_resource type="Script" uid="uid://bx5truiuwrppl" path="res://scripts/dynamicCamera.gd" id="3_vqv25"]
+[ext_resource type="Script" uid="uid://bw6mj4lirphae" path="res://scenes/ViewRayCast.gd" id="4_56cex"]
+[ext_resource type="Script" uid="uid://xdo2blghyipu" path="res://scenes/spaceDust.gd" id="4_anfqm"]
+[ext_resource type="Script" uid="uid://ctl0u3u0xe4v" path="res://scenes/Weapons.gd" id="6_o6kr3"]
 [ext_resource type="Texture2D" uid="uid://dpnxlmbtqty0c" path="res://textures/FOOTAGECRATE-MachingGunMuzzleFlashSide3-prev-full.png" id="7_1luoq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8wen1"]
@@ -19,7 +19,6 @@ point_size = 4.0
 
 [sub_resource type="PointMesh" id="PointMesh_rs07s"]
 material = SubResource("StandardMaterial3D_n3mub")
-custom_aabb = AABB(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 
 [node name="Ship" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0271521, 0.0150385, -0.0193691)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bt1b023h0w6sr" path="res://textures/KovaaK-Crosshair.png" id="1_b8jdb"]
 [ext_resource type="Texture2D" uid="uid://c6ltdpqvxs3ib" path="res://textures/KovaaK-Crosshair (1).png" id="2_m7amk"]
-[ext_resource type="Script" path="res://scripts/movingCross.gd" id="3_h56q6"]
+[ext_resource type="Script" uid="uid://bwsf8pdq64hqx" path="res://scripts/movingCross.gd" id="3_h56q6"]
 
 [node name="Hud" type="CanvasLayer"]
 
