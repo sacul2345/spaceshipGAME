@@ -21,7 +21,6 @@ point_size = 4.0
 material = SubResource("StandardMaterial3D_n3mub")
 
 [node name="Ship" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0271521, 0.0150385, -0.0193691)
 
 [node name="shipBody" type="RigidBody3D" parent="."]
 transform = Transform3D(1.00156, -3.82268e-06, 0.00172365, -1.27316e-06, 1.00156, 0.002961, -0.00172366, -0.00296102, 1.00155, 0, 0, 0)

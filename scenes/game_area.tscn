@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bncti2a7t877h"]
+[gd_scene load_steps=11 format=3 uid="uid://bncti2a7t877h"]
 
 [ext_resource type="PackedScene" uid="uid://dfm20dycpgf7y" path="res://scenes/ship.tscn" id="1_0qixp"]
 [ext_resource type="Texture2D" uid="uid://cd8aq3hdwyli5" path="res://textures/compskybox.jpeg" id="2_rs8yv"]
@@ -39,12 +39,6 @@ material = SubResource("StandardMaterial3D_unxed")
 radial_segments = 128
 rings = 64
 
-[sub_resource type="FogMaterial" id="FogMaterial_ndhr6"]
-density = 5.2865
-albedo = Color(0.44736, 0.869957, 0.858589, 1)
-height_falloff = 0.00608875
-edge_fade = 2.98572
-
 [node name="GameArea" type="Node3D"]
 
 [node name="Ship" parent="." instance=ExtResource("1_0qixp")]
@@ -78,8 +72,3 @@ shape = SubResource("SphereShape3D_vknq4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="planet"]
 mesh = SubResource("SphereMesh_jd426")
-
-[node name="FogVolume" type="FogVolume" parent="planet"]
-size = Vector3(1.2, 1.2, 1.2)
-shape = 0
-material = SubResource("FogMaterial_ndhr6")
