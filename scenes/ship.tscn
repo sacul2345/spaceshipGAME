@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dfm20dycpgf7y"]
 
 [ext_resource type="Script" uid="uid://d3m74lgrscxdv" path="res://scripts/moveShip.gd" id="1_bdwil"]
-[ext_resource type="PackedScene" uid="uid://biw0b2ojys48f" path="res://scenes/shipOne.tscn" id="2_rqaq0"]
+[ext_resource type="PackedScene" uid="uid://cmhkcp1a848ww" path="res://scenes/objship.tscn" id="2_3m36u"]
 [ext_resource type="Script" uid="uid://bx5truiuwrppl" path="res://scripts/dynamicCamera.gd" id="3_vqv25"]
 [ext_resource type="Script" uid="uid://bw6mj4lirphae" path="res://scenes/ViewRayCast.gd" id="4_56cex"]
 [ext_resource type="Script" uid="uid://xdo2blghyipu" path="res://scenes/spaceDust.gd" id="4_anfqm"]
@@ -32,8 +32,8 @@ script = ExtResource("1_bdwil")
 transform = Transform3D(1, -9.09495e-13, 4.65661e-10, 0, 1, -2.32831e-10, -3.49246e-10, -2.32831e-10, 1, 0, 0.221, -1.382)
 shape = SubResource("BoxShape3D_8wen1")
 
-[node name="ship" parent="shipBody" instance=ExtResource("2_rqaq0")]
-transform = Transform3D(0.5, -3.12303e-13, 9.10201e-11, 5.29259e-14, 0.5, -8.44325e-12, -3.21776e-11, -4.76811e-11, 0.5, -1.86265e-09, -0.785, -4.49126)
+[node name="Node3D" parent="shipBody" instance=ExtResource("2_3m36u")]
+transform = Transform3D(0.5, -3.08149e-33, 5.82077e-11, 0, 0.5, 2.64698e-23, -5.82077e-11, -2.64698e-23, 0.5, -1.86265e-09, -0.785, -4.49126)
 
 [node name="ThirdPersonCam" type="Camera3D" parent="shipBody"]
 transform = Transform3D(0.998441, -2.72848e-12, -3.37604e-09, 0, 0.998438, -3.49246e-09, 0, 2.32831e-10, 0.998447, -1.86265e-09, 2.655, 6.239)

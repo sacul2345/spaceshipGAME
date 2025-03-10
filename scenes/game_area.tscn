@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dfm20dycpgf7y" path="res://scenes/ship.tscn" id="1_0qixp"]
 [ext_resource type="Texture2D" uid="uid://cd8aq3hdwyli5" path="res://textures/compskybox.jpeg" id="2_rs8yv"]
-[ext_resource type="PackedScene" uid="uid://evpn8e8kbhf2" path="res://blender/spaceshiptest1.blend" id="4_34ecb"]
+[ext_resource type="PackedScene" uid="uid://cmhkcp1a848ww" path="res://scenes/objship.tscn" id="4_3mx8n"]
 [ext_resource type="Texture2D" uid="uid://bpvot7pmxcdgn" path="res://textures/4k_haumea_fictional.jpg" id="6_m0acr"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kvkr1"]
@@ -21,7 +21,6 @@ tonemap_mode = 1
 glow_enabled = true
 fog_light_energy = 0.0
 fog_density = 0.008
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.0015
 adjustment_enabled = true
 adjustment_saturation = 1.45
@@ -55,12 +54,6 @@ shadow_enabled = true
 shadow_bias = 0.015
 sky_mode = 1
 
-[node name="spaceshiptest1" parent="." instance=ExtResource("4_34ecb")]
-transform = Transform3D(0.692419, 0.292555, -0.65952, -0.211839, 0.956249, 0.201774, 0.689695, 0, 0.7241, -12.6995, 11.4692, -49.0342)
-
-[node name="spaceshiptest2" parent="." instance=ExtResource("4_34ecb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9503, 35.7308, 40.066)
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.199951, 0, 15.067)
 
@@ -72,3 +65,6 @@ shape = SubResource("SphereShape3D_vknq4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="planet"]
 mesh = SubResource("SphereMesh_jd426")
+
+[node name="Node3D" parent="." instance=ExtResource("4_3mx8n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.113, 161.663, 139.986)
