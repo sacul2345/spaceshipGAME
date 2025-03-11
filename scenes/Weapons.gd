@@ -41,8 +41,3 @@ func moveFlash():
 		gun1Flash.offset.x = 0
 		gun2Flash.offset.x = 0
 		
-
-
-
-
-

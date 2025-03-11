@@ -11,14 +11,15 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_8wen1"]
 size = Vector3(5.66, 0.901, 6.976)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n3mub"]
-emission_enabled = true
-emission = Color(0.454524, 0.454524, 0.454524, 1)
-use_point_size = true
-point_size = 4.0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3m36u"]
+shading_mode = 0
 
-[sub_resource type="PointMesh" id="PointMesh_rs07s"]
-material = SubResource("StandardMaterial3D_n3mub")
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_8qiel"]
+material = SubResource("StandardMaterial3D_3m36u")
+radius = 0.001
+section_length = 0.01
+cap_top = false
+cap_bottom = false
 
 [node name="Ship" type="Node3D"]
 
@@ -46,18 +47,23 @@ target_position = Vector3(2.08165e-12, 2.08165e-12, -1000)
 script = ExtResource("4_56cex")
 
 [node name="spaceDust" type="CPUParticles3D" parent="shipBody" node_paths=PackedStringArray("shipRigidBody")]
-transform = Transform3D(1, -4.51597e-12, 2.98932e-09, 4.80348e-13, 0.999999, -2.18113e-10, -1.57539e-09, -1.4967e-09, 0.999999, 0.0375986, 9.33296, -21.8267)
+transform = Transform3D(-0.00169595, -0.0017246, 0.999996, 0.999922, 0.0123391, 0.0017171, -0.012342, 0.99992, 0.00170354, -8.3819e-09, 0, -8.97)
 cast_shadow = 0
+ignore_occlusion_culling = true
+gi_mode = 0
 emitting = false
-amount = 500
-mesh = SubResource("PointMesh_rs07s")
-emission_shape = 3
-emission_box_extents = Vector3(20, 20, 20)
+amount = 80
+lifetime = 0.4
+draw_order = 1
+mesh = SubResource("TubeTrailMesh_8qiel")
+emission_shape = 2
+emission_sphere_radius = 35.0
 direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
 scale_amount_max = 100.0
 script = ExtResource("4_anfqm")
 shipRigidBody = NodePath("..")
+particleMultiplier = 5.0
 
 [node name="Weapons" type="Node3D" parent="shipBody"]
 transform = Transform3D(0.998439, -1.26921e-06, -0.00171829, -3.81076e-06, 0.998434, -0.00295178, 0.0017183, 0.0029518, 0.998441, 0, 0, 0)

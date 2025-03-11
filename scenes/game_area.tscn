@@ -7,7 +7,7 @@
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kvkr1"]
 panorama = ExtResource("2_rs8yv")
-energy_multiplier = 5.4
+energy_multiplier = 3.0
 
 [sub_resource type="Sky" id="Sky_y7ofv"]
 sky_material = SubResource("PanoramaSkyMaterial_kvkr1")
@@ -16,13 +16,17 @@ sky_material = SubResource("PanoramaSkyMaterial_kvkr1")
 background_mode = 2
 sky = SubResource("Sky_y7ofv")
 sky_rotation = Vector3(-0.21293, 1.06465, 0.18326)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.0
 reflected_light_source = 2
 tonemap_mode = 1
 glow_enabled = true
+glow_intensity = 0.42
+glow_bloom = 0.35
 fog_light_energy = 0.0
 fog_density = 0.008
 volumetric_fog_density = 0.0015
-adjustment_enabled = true
 adjustment_saturation = 1.45
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vknq4"]
@@ -48,10 +52,9 @@ environment = SubResource("Environment_7t01e")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(-0.800715, -0.361123, 0.47796, -0.248161, 0.926149, 0.284015, -0.545226, 0.108804, -0.831198, 0, 3.22925, 0)
 light_color = Color(0.855147, 0.926897, 1, 1)
-light_energy = 1.08
-light_indirect_energy = 0.0
+light_energy = 4.0
 shadow_enabled = true
-shadow_bias = 0.015
+shadow_normal_bias = 1.81
 sky_mode = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]
