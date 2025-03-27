@@ -1,8 +1,13 @@
 extends Camera3D
 
-const CAM_FOV = 75
-const CAM_WEIGHT = .05
+@export var CAM_WEIGHT : float
+@export var RETURN_SPEED : float
+
 var rigidBody : RigidBody3D
+
+var cameraBasis : Basis
+var globalVelocity : Vector3
+var relativeVelocity : Vector3
 
 var verticalVelocity : float
 var horizontalVelocity : float
@@ -11,10 +16,21 @@ func _ready():
 	rigidBody = get_parent()
 	
 func _physics_process(_delta) -> void:
-	print(rigidBody.transform.basis.z)
-	print(rigidBody.transform.basis.y)
-
-#func _input(_event):
-#	var desiredPos =  MovingCross.viewCenter - MovingCross.mousePos
-#	h_offset =- (desiredPos.x/150 - h_offset) * CAM_WEIGHT
-#	v_offset =+ (desiredPos.y/150 - v_offset) * CAM_WEIGHT
+	print(relativeVelocity)
+	if(rigidBody):
+		cameraBasis = global_transform.basis
+		globalVelocity = rigidBody.angular_velocity
+		relativeVelocity = cameraBasis.inverse() * globalVelocity
+		
+		offsetCam(relativeVelocity)
+		
+func offsetCam(localShipVelocity):
+	var target_h_offset = (localShipVelocity.y) * -RETURN_SPEED
+	var target_v_offset = (localShipVelocity.x) * RETURN_SPEED
+	
+	h_offset = lerp(h_offset,target_h_offset, CAM_WEIGHT)
+	v_offset = lerp(v_offset,target_v_offset, CAM_WEIGHT)
+		
+	
+	
+	
