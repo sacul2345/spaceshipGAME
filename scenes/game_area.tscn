@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=3 uid="uid://bncti2a7t877h"]
 
 [ext_resource type="PackedScene" uid="uid://dfm20dycpgf7y" path="res://scenes/ship.tscn" id="1_0qixp"]
-[ext_resource type="Texture2D" uid="uid://cd8aq3hdwyli5" path="res://textures/compskybox.jpeg" id="2_rs8yv"]
+[ext_resource type="Texture2D" uid="uid://dx7vdopsnefgu" path="res://textures/HDR_blue_local_star.jpg" id="2_3mx8n"]
 [ext_resource type="PackedScene" uid="uid://cmhkcp1a848ww" path="res://scenes/objship.tscn" id="4_3mx8n"]
 [ext_resource type="Texture2D" uid="uid://bpvot7pmxcdgn" path="res://textures/4k_haumea_fictional.jpg" id="6_m0acr"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kvkr1"]
-panorama = ExtResource("2_rs8yv")
-energy_multiplier = 3.0
+panorama = ExtResource("2_3mx8n")
+energy_multiplier = 2.0
 
 [sub_resource type="Sky" id="Sky_y7ofv"]
 sky_material = SubResource("PanoramaSkyMaterial_kvkr1")

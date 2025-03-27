@@ -22,8 +22,10 @@ MovingCross="*res://scripts/movingCross.gd"
 
 [display]
 
-window/size/viewport_width=1000
-window/size/viewport_height=1000
+window/size/viewport_width=520
+window/size/viewport_height=240
+window/size/mode=2
+window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
 [input]
