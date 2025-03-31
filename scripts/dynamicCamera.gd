@@ -16,7 +16,7 @@ func _ready():
 	rigidBody = get_parent()
 	
 func _physics_process(_delta) -> void:
-	print(relativeVelocity)
+	#print(relativeVelocity)
 	if(rigidBody):
 		cameraBasis = global_transform.basis
 		globalVelocity = rigidBody.angular_velocity

@@ -13,7 +13,7 @@ func _ready():
 func _process(_delta):
 	shipSpeed = shipRigidBody.linear_velocity.length()
 	if(shipRigidBody != null):
-		if(shipSpeed > 40):
+		if(shipSpeed > 50):
 			emitting = true
 			#amount = shipSpeed * particleMultiplier
 			#print(shipSpeed * particleMultiplier)

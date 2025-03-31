@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dfm20dycpgf7y"]
+[gd_scene load_steps=11 format=3 uid="uid://dfm20dycpgf7y"]
 
 [ext_resource type="Script" uid="uid://d3m74lgrscxdv" path="res://scripts/moveShip.gd" id="1_bdwil"]
 [ext_resource type="PackedScene" uid="uid://cmhkcp1a848ww" path="res://scenes/objship.tscn" id="2_3m36u"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://xdo2blghyipu" path="res://scenes/spaceDust.gd" id="4_anfqm"]
 [ext_resource type="Script" uid="uid://ctl0u3u0xe4v" path="res://scenes/Weapons.gd" id="6_o6kr3"]
 [ext_resource type="Texture2D" uid="uid://dpnxlmbtqty0c" path="res://textures/FOOTAGECRATE-MachingGunMuzzleFlashSide3-prev-full.png" id="7_1luoq"]
-[ext_resource type="Script" uid="uid://cekeurmapwx5l" path="res://scenes/cpu_particles_3d.gd" id="8_8qiel"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8wen1"]
 size = Vector3(5.66, 0.901, 6.976)
@@ -21,16 +20,6 @@ radius = 0.001
 section_length = 0.01
 cap_top = false
 cap_bottom = false
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7djl"]
-emission_enabled = true
-emission = Color(0.880828, 1.55703e-05, 9.04858e-06, 1)
-emission_energy_multiplier = 12.0
-use_point_size = true
-point_size = 5.0
-
-[sub_resource type="PointMesh" id="PointMesh_3m36u"]
-material = SubResource("StandardMaterial3D_d7djl")
 
 [node name="Ship" type="Node3D"]
 
@@ -78,45 +67,39 @@ script = ExtResource("4_anfqm")
 shipRigidBody = NodePath("..")
 particleMultiplier = 5.0
 
-[node name="Weapons" type="Node3D" parent="shipBody"]
-transform = Transform3D(0.998439, -1.26921e-06, -0.00171829, -3.81076e-06, 0.998434, -0.00295178, 0.0017183, 0.0029518, 0.998441, 0, 0, 0)
+[node name="Weapons" type="Node3D" parent="shipBody" node_paths=PackedStringArray("gunTimer")]
 script = ExtResource("6_o6kr3")
+gunTimer = NodePath("gunTimer")
 
 [node name="Gun1" type="RayCast3D" parent="shipBody/Weapons"]
-transform = Transform3D(1.00156, -3.82268e-06, 0.00172365, -1.27316e-06, 1.00156, 0.002961, -0.00172366, -0.00296102, 1.00155, 1.23283, -0.00118915, -4.43305)
+transform = Transform3D(1.00156, -3.82268e-06, 0.00172365, -1.27316e-06, 1.00156, 0.002961, -0.00172366, -0.00296102, 1.00155, 1.25, 0, -4.6)
 target_position = Vector3(2.08165e-12, 2.08165e-12, -1000)
 debug_shape_custom_color = Color(0.780392, 0, 0, 1)
 
 [node name="Sprite3D" type="Sprite3D" parent="shipBody/Weapons/Gun1"]
 transform = Transform3D(-1.74846e-07, -2.43956e-13, 1, -1.81328e-09, 1, 2.43937e-13, -4, -4.53321e-10, -4.37114e-08, -0.00127041, -0.00447991, -0.0974956)
+visible = false
 gi_mode = 0
 pixel_size = 0.005
 axis = 1
 texture = ExtResource("7_1luoq")
 
 [node name="Gun2" type="RayCast3D" parent="shipBody/Weapons"]
-transform = Transform3D(1.00156, -3.82268e-06, 0.00172365, -1.27316e-06, 1.00156, 0.002961, -0.00172366, -0.00296102, 1.00155, -1.22976, -0.0029959, -4.62349)
+transform = Transform3D(1.00156, -3.82268e-06, 0.00172365, -1.27316e-06, 1.00156, 0.002961, -0.00172366, -0.00296102, 1.00155, -1.249, 0.002, -4.6)
 target_position = Vector3(2.08165e-12, 2.08165e-12, -1000)
 debug_shape_custom_color = Color(0.694118, 0, 0, 1)
 
 [node name="Sprite3D" type="Sprite3D" parent="shipBody/Weapons/Gun2"]
 transform = Transform3D(-1.74846e-07, 3.48787e-16, 1, 1.39515e-15, 1, -3.48787e-16, -4, 3.48787e-16, -4.37114e-08, 0, 0, 0)
+visible = false
 gi_mode = 0
 pixel_size = 0.005
 axis = 1
 texture = ExtResource("7_1luoq")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="shipBody" node_paths=PackedStringArray("shipRigidBody")]
-transform = Transform3D(2.65852, -2.22249e-07, -0.00171829, -1.01468e-05, 0.174834, -0.00295178, 0.00457526, 0.000516886, 0.998441, 0.0129089, 0.0770489, 1.904)
-emitting = false
-amount = 500
-lifetime = 0.12
-mesh = SubResource("PointMesh_3m36u")
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-gravity = Vector3(0, 0, 0)
-script = ExtResource("8_8qiel")
-shipRigidBody = NodePath("..")
+[node name="gunTimer" type="Timer" parent="shipBody/Weapons"]
+process_callback = 0
+autostart = true
 
 [connection signal="hasTarget" from="shipBody/ThirdPersonCam/ViewRayCast" to="shipBody/Weapons" method="_on_view_ray_cast_has_target"]
 [connection signal="tree_entered" from="shipBody/ThirdPersonCam/ViewRayCast" to="shipBody/Weapons" method="_on_view_ray_cast_tree_entered"]
