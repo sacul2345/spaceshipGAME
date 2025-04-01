@@ -25,10 +25,10 @@ func _input(_event):
 	
 	axisDistance = crossPos - viewCenter
 	distance = mousePos.distance_to(viewCenter)
-	centerRad = atan2(axisDistance.y + 15,axisDistance.x + 10) #I have no idea why i need to add these random numbers but they center the point where the crosshair orbits
+	centerRad = atan2(axisDistance.y + 20,axisDistance.x + 10) #I have no idea why i need to add these random numbers but they center the point where the crosshair orbits
 	
 	if(distance < 255):
-		self_modulate.a = (distance - 10)/255
+		self_modulate.a = (distance - 5)/255
 	
 	position = mousePos
 	rotation = centerRad + PI/2

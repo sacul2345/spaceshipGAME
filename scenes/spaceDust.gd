@@ -1,24 +1,19 @@
-extends CPUParticles3D
+extends Node3D
 
 @export var shipRigidBody : RigidBody3D
 @export var particleMultiplier : float
+@export var particles : CPUParticles3D
 
 var shipSpeed : float
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	shipSpeed = shipRigidBody.linear_velocity.length()
-	if(shipRigidBody != null):
-		if(shipSpeed > 50):
-			emitting = true
-			#amount = shipSpeed * particleMultiplier
-			#print(shipSpeed * particleMultiplier)
+func _physics_process(_delta: float) -> void:
+	if(shipRigidBody != null && particles != null):
+		shipSpeed = shipRigidBody.linear_velocity.length()
+		if(shipSpeed > 10):
+			particles.emitting = true
+			look_at(global_position - shipRigidBody.linear_velocity, Vector3.FORWARD)
 		else:
-			emitting = false
+			particles.emitting = false
 
 		
 		
