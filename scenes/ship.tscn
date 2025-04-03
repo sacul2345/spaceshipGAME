@@ -30,7 +30,7 @@ cap_bottom = false
 [node name="Ship" type="Node3D"]
 
 [node name="shipBody" type="RigidBody3D" parent="."]
-transform = Transform3D(1.00156, -3.82268e-06, 0.00172365, -1.27316e-06, 1.00156, 0.002961, -0.00172366, -0.00296102, 1.00155, 0, 0, 0)
+transform = Transform3D(1.00156, 0, 0, 0, 1.00156, 0, 0, 0, 1.00156, 0, 0, 0)
 can_sleep = false
 linear_damp = 1.0
 angular_damp = 9.475
@@ -44,7 +44,7 @@ shape = SubResource("BoxShape3D_8wen1")
 transform = Transform3D(0.5, -3.08149e-33, 5.82077e-11, 0, 0.5, 2.64698e-23, -5.82077e-11, -2.64698e-23, 0.5, -1.86265e-09, -0.785, -4.49126)
 
 [node name="ThirdPersonCam" type="Camera3D" parent="shipBody"]
-transform = Transform3D(0.998441, -2.72848e-12, -3.37604e-09, 0, 0.998438, -3.49246e-09, 0, 2.32831e-10, 0.998447, -1.86265e-09, 2.655, 6.239)
+transform = Transform3D(1, 0, 0, 0, 1, -2.33195e-10, 0, 2.33195e-10, 1, -1.86265e-09, 2.655, 6.239)
 current = true
 script = ExtResource("3_vqv25")
 CAM_WEIGHT = 0.1
@@ -55,13 +55,14 @@ transform = Transform3D(1, -1.87535e-13, 1.57339e-10, -9.34874e-13, 1, 7.38078e-
 target_position = Vector3(2.08165e-12, 2.08165e-12, -1000)
 script = ExtResource("4_56cex")
 
-[node name="Weapons" type="Node3D" parent="shipBody" node_paths=PackedStringArray("gunTimer", "gunShot")]
+[node name="Weapons" type="Node3D" parent="shipBody" node_paths=PackedStringArray("gunTimer", "gunShot", "muzzleLight")]
 script = ExtResource("6_o6kr3")
 gunTimer = NodePath("gunTimer")
 gunShot = NodePath("Gunshot")
+muzzleLight = NodePath("muzzleLight")
 
 [node name="Gun1" type="RayCast3D" parent="shipBody/Weapons"]
-transform = Transform3D(1.00156, -3.82268e-06, 0.00172365, -1.27316e-06, 1.00156, 0.002961, -0.00172366, -0.00296102, 1.00155, 1.25, 0, -4.6)
+transform = Transform3D(1.00156, 0, 0, 0, 1.00156, 0, 0, 0, 1.00156, 1.25, 0, -4.6)
 target_position = Vector3(2.08165e-12, 2.08165e-12, -1000)
 debug_shape_custom_color = Color(0.780392, 0, 0, 1)
 
@@ -74,7 +75,7 @@ axis = 1
 texture = ExtResource("7_1luoq")
 
 [node name="Gun2" type="RayCast3D" parent="shipBody/Weapons"]
-transform = Transform3D(1.00156, -3.82268e-06, 0.00172365, -1.27316e-06, 1.00156, 0.002961, -0.00172366, -0.00296102, 1.00155, -1.249, 0.002, -4.6)
+transform = Transform3D(1.00156, 0, 0, 0, 1.00156, 0, 0, 0, 1.00156, -1.249, 0.002, -4.6)
 target_position = Vector3(2.08165e-12, 2.08165e-12, -1000)
 debug_shape_custom_color = Color(0.694118, 0, 0, 1)
 
@@ -91,8 +92,17 @@ process_callback = 0
 autostart = true
 
 [node name="Gunshot" type="AudioStreamPlayer3D" parent="shipBody/Weapons"]
+transform = Transform3D(0.998441, 0, 0, 0, 0.998438, 0, 0, 0, 0.998447, 0, 0, -5.28318)
 stream = ExtResource("7_03y04")
 pitch_scale = 1.5
+panning_strength = 0.0
+
+[node name="muzzleLight" type="OmniLight3D" parent="shipBody/Weapons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0672678, 0, -6.67037)
+visible = false
+light_color = Color(0.990421, 1, 0.683284, 1)
+light_size = 1.0
+omni_range = 3.886
 
 [node name="spaceDust" type="Node3D" parent="shipBody" node_paths=PackedStringArray("shipRigidBody", "particles")]
 script = ExtResource("4_anfqm")
@@ -128,6 +138,7 @@ engineWah = NodePath("EngineWah")
 
 [node name="EngineAmbient" type="AudioStreamPlayer3D" parent="shipBody/Engine"]
 stream = ExtResource("8_8qiel")
+volume_db = 10.0
 pitch_scale = 0.5
 autoplay = true
 
@@ -136,7 +147,5 @@ stream = ExtResource("11_tlr80")
 volume_db = -5.0
 autoplay = true
 
-[connection signal="hasTarget" from="shipBody/ThirdPersonCam/ViewRayCast" to="shipBody/Weapons" method="_on_view_ray_cast_has_target"]
-[connection signal="tree_entered" from="shipBody/ThirdPersonCam/ViewRayCast" to="shipBody/Weapons" method="_on_view_ray_cast_tree_entered"]
 [connection signal="tree_entered" from="shipBody/Weapons/Gun1" to="shipBody/Weapons" method="_on_gun_1_tree_entered"]
 [connection signal="tree_entered" from="shipBody/Weapons/Gun2" to="shipBody/Weapons" method="_on_gun_2_tree_entered"]

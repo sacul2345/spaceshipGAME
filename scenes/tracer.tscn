@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bubqihoutp0dn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjn3q"]
+emission_enabled = true
+emission = Color(0.893405, 0.424978, 0.22524, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_o68uk"]
+material = SubResource("StandardMaterial3D_jjn3q")
+radius = 0.02
+height = 1.0
+
+[node name="Tracer" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_o68uk")

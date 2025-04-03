@@ -31,6 +31,7 @@ animations = [{
 [node name="Explosion" type="Node3D"]
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_l04k4")
 frame = 1
