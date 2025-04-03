@@ -92,7 +92,6 @@ autostart = true
 
 [node name="Gunshot" type="AudioStreamPlayer3D" parent="shipBody/Weapons"]
 stream = ExtResource("7_03y04")
-volume_db = -10.0
 pitch_scale = 1.5
 
 [node name="spaceDust" type="Node3D" parent="shipBody" node_paths=PackedStringArray("shipRigidBody", "particles")]
@@ -120,7 +119,6 @@ scale_amount_max = 100.0
 
 [node name="Engine" type="AudioStreamPlayer3D" parent="shipBody" node_paths=PackedStringArray("shipRigidBody", "engineAmbient", "engineWah")]
 stream = ExtResource("8_bseor")
-volume_db = -10.0
 pitch_scale = 0.5
 autoplay = true
 script = ExtResource("9_itrim")
@@ -130,13 +128,12 @@ engineWah = NodePath("EngineWah")
 
 [node name="EngineAmbient" type="AudioStreamPlayer3D" parent="shipBody/Engine"]
 stream = ExtResource("8_8qiel")
-volume_db = -10.0
 pitch_scale = 0.5
 autoplay = true
 
 [node name="EngineWah" type="AudioStreamPlayer3D" parent="shipBody/Engine"]
 stream = ExtResource("11_tlr80")
-volume_db = -15.0
+volume_db = -5.0
 autoplay = true
 
 [connection signal="hasTarget" from="shipBody/ThirdPersonCam/ViewRayCast" to="shipBody/Weapons" method="_on_view_ray_cast_has_target"]

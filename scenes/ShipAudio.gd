@@ -10,7 +10,7 @@ func _physics_process(_delta: float) -> void:
 		pitch_scale = 1 + shipRigidBody.linear_velocity.length()/150
 		engineAmbient.volume_db = (-5 - shipRigidBody.linear_velocity.length()/5) - 10
 		if(shipRigidBody.linear_velocity.length() > 40):
-			engineWah.volume_db = -60 + (shipRigidBody.linear_velocity.length()/4)
+			engineWah.volume_db = -30 + (shipRigidBody.linear_velocity.length()/4)
 			engineWah.pitch_scale = shipRigidBody.linear_velocity.length()/150
 		else:
-			engineWah.volume_db = -60
+			engineWah.volume_db = -30
