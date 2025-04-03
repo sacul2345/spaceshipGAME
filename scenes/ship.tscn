@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfm20dycpgf7y"]
+[gd_scene load_steps=16 format=3 uid="uid://dfm20dycpgf7y"]
 
 [ext_resource type="Script" uid="uid://d3m74lgrscxdv" path="res://scripts/moveShip.gd" id="1_bdwil"]
 [ext_resource type="PackedScene" uid="uid://cmhkcp1a848ww" path="res://scenes/objship.tscn" id="2_3m36u"]
@@ -7,6 +7,11 @@
 [ext_resource type="Script" uid="uid://xdo2blghyipu" path="res://scenes/spaceDust.gd" id="4_anfqm"]
 [ext_resource type="Script" uid="uid://ctl0u3u0xe4v" path="res://scenes/Weapons.gd" id="6_o6kr3"]
 [ext_resource type="Texture2D" uid="uid://dpnxlmbtqty0c" path="res://textures/FOOTAGECRATE-MachingGunMuzzleFlashSide3-prev-full.png" id="7_1luoq"]
+[ext_resource type="AudioStream" uid="uid://wc1b7uiglcao" path="res://gunshot.wav" id="7_03y04"]
+[ext_resource type="AudioStream" uid="uid://cp1fsgr6kdl6p" path="res://engine.wav" id="8_8qiel"]
+[ext_resource type="AudioStream" uid="uid://d1tth2amwplqm" path="res://engine3.wav" id="8_bseor"]
+[ext_resource type="Script" uid="uid://dts242s7lh2sq" path="res://scenes/ShipAudio.gd" id="9_itrim"]
+[ext_resource type="AudioStream" uid="uid://d11vtihx1nofj" path="res://enginewah.wav" id="11_tlr80"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8wen1"]
 size = Vector3(5.66, 0.901, 6.976)
@@ -50,9 +55,10 @@ transform = Transform3D(1, -1.87535e-13, 1.57339e-10, -9.34874e-13, 1, 7.38078e-
 target_position = Vector3(2.08165e-12, 2.08165e-12, -1000)
 script = ExtResource("4_56cex")
 
-[node name="Weapons" type="Node3D" parent="shipBody" node_paths=PackedStringArray("gunTimer")]
+[node name="Weapons" type="Node3D" parent="shipBody" node_paths=PackedStringArray("gunTimer", "gunShot")]
 script = ExtResource("6_o6kr3")
 gunTimer = NodePath("gunTimer")
+gunShot = NodePath("Gunshot")
 
 [node name="Gun1" type="RayCast3D" parent="shipBody/Weapons"]
 transform = Transform3D(1.00156, -3.82268e-06, 0.00172365, -1.27316e-06, 1.00156, 0.002961, -0.00172366, -0.00296102, 1.00155, 1.25, 0, -4.6)
@@ -84,6 +90,11 @@ texture = ExtResource("7_1luoq")
 process_callback = 0
 autostart = true
 
+[node name="Gunshot" type="AudioStreamPlayer3D" parent="shipBody/Weapons"]
+stream = ExtResource("7_03y04")
+volume_db = -10.0
+pitch_scale = 1.5
+
 [node name="spaceDust" type="Node3D" parent="shipBody" node_paths=PackedStringArray("shipRigidBody", "particles")]
 script = ExtResource("4_anfqm")
 shipRigidBody = NodePath("..")
@@ -106,6 +117,27 @@ emission_sphere_radius = 35.0
 direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
 scale_amount_max = 100.0
+
+[node name="Engine" type="AudioStreamPlayer3D" parent="shipBody" node_paths=PackedStringArray("shipRigidBody", "engineAmbient", "engineWah")]
+stream = ExtResource("8_bseor")
+volume_db = -10.0
+pitch_scale = 0.5
+autoplay = true
+script = ExtResource("9_itrim")
+shipRigidBody = NodePath("..")
+engineAmbient = NodePath("EngineAmbient")
+engineWah = NodePath("EngineWah")
+
+[node name="EngineAmbient" type="AudioStreamPlayer3D" parent="shipBody/Engine"]
+stream = ExtResource("8_8qiel")
+volume_db = -10.0
+pitch_scale = 0.5
+autoplay = true
+
+[node name="EngineWah" type="AudioStreamPlayer3D" parent="shipBody/Engine"]
+stream = ExtResource("11_tlr80")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="hasTarget" from="shipBody/ThirdPersonCam/ViewRayCast" to="shipBody/Weapons" method="_on_view_ray_cast_has_target"]
 [connection signal="tree_entered" from="shipBody/ThirdPersonCam/ViewRayCast" to="shipBody/Weapons" method="_on_view_ray_cast_tree_entered"]

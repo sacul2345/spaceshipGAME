@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var gunTimer : Timer
+@export var gunShot : AudioStreamPlayer3D
 
 var explosionInstance = preload("res://scenes/explosion.tscn")
 
@@ -31,7 +32,7 @@ func _on_gun_2_tree_entered():
 
 func _physics_process(_delta):
 	if(weaponsFiring):
-		fireWeapons()	
+		fireWeapons()
 	
 func _input(_event):
 	if(Input.is_action_pressed("attack")):
@@ -43,8 +44,8 @@ func fireWeapons():
 	await gunTimer.timeout
 	muzzleFlash()
 	hitScan()
+	gunShot.play()
 	gunTimer.start(gunRPMTimer)
-	
 		
 		
 func muzzleFlash():

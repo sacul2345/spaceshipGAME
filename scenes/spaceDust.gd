@@ -9,12 +9,8 @@ var shipSpeed : float
 func _physics_process(_delta: float) -> void:
 	if(shipRigidBody != null && particles != null):
 		shipSpeed = shipRigidBody.linear_velocity.length()
-		if(shipSpeed > 10):
+		if(shipSpeed > 45):
 			particles.emitting = true
 			look_at(global_position - shipRigidBody.linear_velocity, Vector3.FORWARD)
 		else:
 			particles.emitting = false
-
-		
-		
-		
