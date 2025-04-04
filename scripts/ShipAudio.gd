@@ -13,3 +13,5 @@ func _physics_process(_delta: float) -> void:
 			engineWah.pitch_scale = shipRigidBody.linear_velocity.length()/150
 		else:
 			engineWah.volume_db = -30
+
+#I LOVE MAGIC NUMBERS!!! SURELY THIS WONT CAUSE ANY ISSUES

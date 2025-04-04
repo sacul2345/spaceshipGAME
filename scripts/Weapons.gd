@@ -59,6 +59,7 @@ func muzzleFlash():
 		gun2Flash.visible = false
 
 #hitscan funcion is BADDD and needs to be RE-WRITTEN, will do that someday... ITS LAGGING!!
+#divide all this shit into multiple funcions, hitscans should be for HITSCAN!!!
 
 func hitScan():
 	if(gun1.is_colliding()):
@@ -96,6 +97,7 @@ func drawTracer(pos : Vector3, rot : Vector3, targetPos : Vector3):
 	var tween = get_tree().create_tween()
 	tween.tween_property(tracer, "position", targetPos, targetPos.distance_to(pos)/(BULLETSPEED/10.0))
 	tween.tween_callback(tracer.queue_free)
+	tween.tween_callback(tween.kill)
 	#tween.connect("tween_all_completed", queue_free, 0)
 		
 func get_ray_end_point(raycast : RayCast3D, distance : float) -> Vector3:
