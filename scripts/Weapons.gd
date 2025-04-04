@@ -43,7 +43,8 @@ func _input(_event):
 func fireWeapons():
 	await gunTimer.timeout
 	muzzleFlash()
-	hitScan()
+	hitScan1()
+	hitScan2()
 	gunShot.play()
 	gunTimer.start(gunRPMTimer)
 		
@@ -61,7 +62,7 @@ func muzzleFlash():
 #hitscan funcion is BADDD and needs to be RE-WRITTEN, will do that someday... ITS LAGGING!!
 #divide all this shit into multiple funcions, hitscans should be for HITSCAN!!!
 
-func hitScan():
+func hitScan1():
 	if(gun1.is_colliding()):
 		var explosionPos = gun1.get_collision_point()
 		var gunDisatnce = explosionPos.distance_to(position)
@@ -75,6 +76,7 @@ func hitScan():
 	else:
 		drawTracer(gun1.global_position,gun1.global_rotation_degrees,get_ray_end_point(gun1,-1000))
 		
+func hitScan2():
 	if(gun2.is_colliding()):
 		var explosionPos = gun2.get_collision_point()
 		var gunDisatnce = explosionPos.distance_to(position)
