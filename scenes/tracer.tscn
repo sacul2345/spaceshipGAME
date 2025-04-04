@@ -14,4 +14,5 @@ height = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0, 0)
+cast_shadow = 0
 mesh = SubResource("CapsuleMesh_o68uk")
