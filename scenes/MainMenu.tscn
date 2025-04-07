@@ -157,11 +157,11 @@ offset_bottom = 42.0
 
 [node name="IP LABEL" type="Label" parent="Control/Multiplayer button/Multiplayer Window/LAN Join/IP INPUT"]
 layout_mode = 0
-offset_left = -23.0
-offset_top = 3.0
-offset_right = 17.0
-offset_bottom = 26.0
-text = "IP:"
+offset_left = 4.0
+offset_top = -27.0
+offset_right = 100.0
+offset_bottom = -4.0
+text = "webstocket?"
 
 [node name="Settings Button" type="Button" parent="Control"]
 layout_mode = 0
