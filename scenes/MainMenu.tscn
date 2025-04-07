@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://cw6kmw1ilhxi7" path="res://models/spaceshiptest2.glb" id="2_0ykhv"]
 [ext_resource type="Script" uid="uid://dol6mhh2fme11" path="res://models/spaceshiptest_2.gd" id="3_2wh52"]
 [ext_resource type="AudioStream" uid="uid://d1tth2amwplqm" path="res://audio/engine3.wav" id="4_ow34m"]
-[ext_resource type="AudioStream" uid="uid://drvdk5fsuy4el" path="res://audio/music/Cosmic Interlude.mp3" id="5_826wr"]
-[ext_resource type="Script" uid="uid://dm58ccq2xis48" path="res://scenes/Mainmenu.gd" id="5_ucygd"]
-[ext_resource type="AudioStream" uid="uid://co1ullbe4bdli" path="res://audio/music/Inner Guidance.mp3" id="6_ucygd"]
+[ext_resource type="Script" uid="uid://dm58ccq2xis48" path="res://Mainmenu.gd" id="5_ucygd"]
+[ext_resource type="AudioStream" uid="uid://cg5yyqey55wlk" path="res://audio/music/Inner Guidance.wav" id="6_ucygd"]
+[ext_resource type="AudioStream" uid="uid://cpaab8ux53uc5" path="res://audio/music/Cosmic Interlude.wav" id="7_mipys"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0ykhv"]
 panorama = ExtResource("1_ow34m")
@@ -41,7 +41,7 @@ shuffle = true
 fade_time = 1.0
 stream_count = 2
 stream_0 = ExtResource("6_ucygd")
-stream_1 = ExtResource("5_826wr")
+stream_1 = ExtResource("7_mipys")
 
 [node name="Menu" type="Node3D"]
 
@@ -89,15 +89,16 @@ initial_velocity_min = 50.0
 initial_velocity_max = 150.0
 scale_amount_max = 100.0
 
-[node name="Control" type="Control" parent="." node_paths=PackedStringArray("freeRoamButton")]
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("freeRoamButton", "menuMusic")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_ucygd")
 freeRoamButton = NodePath("Free Roam Button")
+menuMusic = NodePath("../Menu Music")
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Title" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 38.0
 offset_top = 36.0
@@ -133,6 +134,5 @@ text = "SETTINGS"
 [node name="Menu Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamPlaylist_ow34m")
 volume_db = -1.0
-autoplay = true
 
 [connection signal="pressed" from="Control/Free Roam Button" to="Control" method="_on_free_roam_button_pressed"]
