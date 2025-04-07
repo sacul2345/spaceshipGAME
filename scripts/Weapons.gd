@@ -64,7 +64,7 @@ func muzzleFlash():
 		await get_tree().create_timer(.05).timeout
 		gun2Flash.visible = false
 
-#hitscan funcion is BADDD and needs to be RE-WRITTEN, will do that someday... ITS LAGGING!!
+#shitscan funcion is BADDD and needs to be RE-WRITTEN, will do that someday... ITS LAGGING!!
 #divide all this shit into multiple funcions, hitscans should be for HITSCAN!!!
 
 func hitScan1():
