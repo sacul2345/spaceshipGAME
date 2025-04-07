@@ -44,19 +44,24 @@ func fireWeapons():
 	await gunTimer.timeout
 	muzzleFlash()
 	hitScan1()
+	gunShot.play()
+	await get_tree().create_timer(.05).timeout
 	hitScan2()
 	gunShot.play()
 	gunTimer.start(gunRPMTimer)
 		
-		
+	#this is fine for now but the rpm offset should be more configurable and random
+	
 func muzzleFlash():
 	if(gun1Flash.visible == false):
 		gun1Flash.visible = true
+		await get_tree().create_timer(.05).timeout
 		gun2Flash.visible = true
 		muzzleLight.visible = true
-		await get_tree().create_timer(.05).timeout
+		await get_tree().create_timer(.01).timeout
 		muzzleLight.visible = false
 		gun1Flash.visible = false
+		await get_tree().create_timer(.05).timeout
 		gun2Flash.visible = false
 
 #hitscan funcion is BADDD and needs to be RE-WRITTEN, will do that someday... ITS LAGGING!!
@@ -70,7 +75,7 @@ func hitScan1():
 		drawTracer(gun1.global_position,gun1.global_rotation_degrees,explosionPos)
 		
 		var explosion : Node3D = explosionInstance.instantiate()
-		await get_tree().create_timer(gunDisatnce/(BULLETSPEED*10)).timeout
+		await get_tree().create_timer(gunDisatnce/(BULLETSPEED)).timeout
 		get_tree().current_scene.add_child(explosion)
 		explosion.position = explosionPos
 	else:
@@ -84,7 +89,7 @@ func hitScan2():
 		drawTracer(gun2.global_position,gun2.global_rotation_degrees,explosionPos)
 		
 		var explosion : Node3D = explosionInstance.instantiate()
-		await get_tree().create_timer(gunDisatnce/(BULLETSPEED*10)).timeout
+		await get_tree().create_timer(gunDisatnce/(BULLETSPEED)).timeout
 		get_tree().current_scene.add_child(explosion)
 		explosion.position = explosionPos
 	else:

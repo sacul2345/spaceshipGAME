@@ -150,18 +150,32 @@ text = "LAN Join
 
 [node name="IP INPUT" type="LineEdit" parent="Control/Multiplayer button/Multiplayer Window/LAN Join"]
 layout_mode = 0
-offset_left = 130.0
-offset_top = 11.0
-offset_right = 305.0
-offset_bottom = 42.0
+offset_left = 110.0
+offset_top = 13.0
+offset_right = 285.0
+offset_bottom = 44.0
 
 [node name="IP LABEL" type="Label" parent="Control/Multiplayer button/Multiplayer Window/LAN Join/IP INPUT"]
 layout_mode = 0
-offset_left = -22.0
-offset_top = 2.0
-offset_right = 74.0
-offset_bottom = 25.0
+offset_left = 4.0
+offset_top = -21.0
+offset_right = 100.0
+offset_bottom = 2.0
 text = "IP:"
+
+[node name="IP INPUT2" type="LineEdit" parent="Control/Multiplayer button/Multiplayer Window"]
+offset_left = 125.0
+offset_top = 24.0
+offset_right = 300.0
+offset_bottom = 55.0
+
+[node name="IP LABEL" type="Label" parent="Control/Multiplayer button/Multiplayer Window/IP INPUT2"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -21.0
+offset_right = 101.0
+offset_bottom = 2.0
+text = "NAME:"
 
 [node name="Settings Button" type="Button" parent="Control"]
 layout_mode = 0
