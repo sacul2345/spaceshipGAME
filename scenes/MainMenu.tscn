@@ -19,6 +19,8 @@ sky_material = SubResource("PanoramaSkyMaterial_0ykhv")
 [sub_resource type="Environment" id="Environment_ow34m"]
 background_mode = 2
 sky = SubResource("Sky_2wh52")
+sky_custom_fov = 59.3
+sky_rotation = Vector3(3.14159, -1.39103, 0)
 ambient_light_source = 2
 ambient_light_color = Color(0.184314, 0.219608, 0.321569, 1)
 fog_light_color = Color(0.827597, 0.757706, 0.695, 1)
@@ -50,12 +52,13 @@ environment = SubResource("Environment_ow34m")
 transform = Transform3D(-0.698303, 0, -0.715802, 0, 1, 0, 0.715802, 0, -0.698303, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.53534, 0, 0)
+transform = Transform3D(0.994529, 0.0125154, 0.103711, -0.0166038, 0.999115, 0.0386521, -0.103136, -0.0401626, 0.993856, 5.53534, 0, 0)
 light_energy = 5.0
 
-[node name="spaceshiptest2" parent="." instance=ExtResource("2_0ykhv")]
+[node name="spaceshiptest2" parent="." node_paths=PackedStringArray("world") instance=ExtResource("2_0ykhv")]
 transform = Transform3D(0.990268, -0.139173, 0, 0.139173, 0.990268, 0, 0, 0, 1, 4.77818, -4.61618, 14.8348)
 script = ExtResource("3_2wh52")
+world = NodePath("../WorldEnvironment")
 
 [node name="enginehum" type="AudioStreamPlayer3D" parent="spaceshiptest2"]
 transform = Transform3D(0.99022, 0.139519, 0, -0.139519, 0.99022, 0, 0, 0, 1, -4.0874, 5.23768, 0.770836)

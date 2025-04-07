@@ -18,7 +18,7 @@ sky = SubResource("Sky_y7ofv")
 sky_rotation = Vector3(-0.21293, 1.06465, 0.18326)
 ambient_light_source = 2
 ambient_light_color = Color(0.360784, 0.423529, 0.443137, 1)
-ambient_light_energy = 0.4
+ambient_light_energy = 0.1
 reflected_light_source = 2
 tonemap_mode = 1
 glow_enabled = true
@@ -27,7 +27,8 @@ glow_bloom = 0.35
 fog_light_energy = 0.0
 fog_density = 0.008
 volumetric_fog_density = 0.0015
-adjustment_saturation = 1.45
+adjustment_enabled = true
+adjustment_saturation = 1.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vknq4"]
 
@@ -49,7 +50,7 @@ rings = 64
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7t01e")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+[node name="Sun" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(-0.800715, -0.361123, 0.47796, -0.248161, 0.926149, 0.284015, -0.545226, 0.108804, -0.831198, 0, 3.22925, 0)
 light_color = Color(0.855147, 0.926897, 1, 1)
 light_energy = 2.0
@@ -59,6 +60,7 @@ sky_mode = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.199951, 0, 15.067)
+fov = 37.8493
 
 [node name="planet" type="StaticBody3D" parent="."]
 transform = Transform3D(5000, 0, 0, 0, 5000, 0, 0, 0, 5000, -2936.61, -158.348, 2874.19)
