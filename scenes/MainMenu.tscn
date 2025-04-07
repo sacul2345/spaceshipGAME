@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://yxxvdpr3hji0" path="res://textures/artplanetskybox.jpg" id="1_ow34m"]
 [ext_resource type="PackedScene" uid="uid://cw6kmw1ilhxi7" path="res://models/spaceshiptest2.glb" id="2_0ykhv"]
-[ext_resource type="Script" uid="uid://dol6mhh2fme11" path="res://models/spaceshiptest_2.gd" id="3_2wh52"]
+[ext_resource type="Script" uid="uid://dol6mhh2fme11" path="res://scripts/Menuship.gd" id="3_2wh52"]
 [ext_resource type="AudioStream" uid="uid://d1tth2amwplqm" path="res://audio/engine3.wav" id="4_ow34m"]
-[ext_resource type="Script" uid="uid://dm58ccq2xis48" path="res://Mainmenu.gd" id="5_ucygd"]
+[ext_resource type="Script" uid="uid://dm58ccq2xis48" path="res://scripts/Mainmenu.gd" id="5_ucygd"]
 [ext_resource type="AudioStream" uid="uid://cg5yyqey55wlk" path="res://audio/music/Inner Guidance.wav" id="6_ucygd"]
 [ext_resource type="AudioStream" uid="uid://cpaab8ux53uc5" path="res://audio/music/Cosmic Interlude.wav" id="7_mipys"]
 
@@ -89,13 +89,17 @@ initial_velocity_min = 50.0
 initial_velocity_max = 150.0
 scale_amount_max = 100.0
 
-[node name="Control" type="Control" parent="." node_paths=PackedStringArray("freeRoamButton", "menuMusic")]
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("freeRoamButton", "multiplayerButton", "multiplayerWindow", "settingsButton", "settingsWindow", "menuMusic")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_ucygd")
 freeRoamButton = NodePath("Free Roam Button")
+multiplayerButton = NodePath("Multiplayer button")
+multiplayerWindow = NodePath("Multiplayer button/Multiplayer Window")
+settingsButton = NodePath("Settings Button")
+settingsWindow = NodePath("Settings Button/Window")
 menuMusic = NodePath("../Menu Music")
 
 [node name="Title" type="Label" parent="Control"]
@@ -123,7 +127,43 @@ offset_right = 53.0
 offset_bottom = 230.0
 text = "MULTIPLAYER"
 
-[node name="Button" type="Button" parent="Control"]
+[node name="Multiplayer Window" type="Window" parent="Control/Multiplayer button"]
+transparent_bg = true
+initial_position = 1
+size = Vector2i(360, 170)
+visible = false
+
+[node name="LAN Host" type="Button" parent="Control/Multiplayer button/Multiplayer Window"]
+offset_left = 15.0
+offset_top = 11.0
+offset_right = 105.0
+offset_bottom = 57.0
+text = "LAN Host"
+
+[node name="LAN Join" type="Button" parent="Control/Multiplayer button/Multiplayer Window"]
+offset_left = 15.0
+offset_top = 73.0
+offset_right = 105.0
+offset_bottom = 119.0
+text = "LAN Join
+"
+
+[node name="IP INPUT" type="LineEdit" parent="Control/Multiplayer button/Multiplayer Window/LAN Join"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 11.0
+offset_right = 305.0
+offset_bottom = 42.0
+
+[node name="IP LABEL" type="Label" parent="Control/Multiplayer button/Multiplayer Window/LAN Join/IP INPUT"]
+layout_mode = 0
+offset_left = -23.0
+offset_top = 3.0
+offset_right = 17.0
+offset_bottom = 26.0
+text = "IP:"
+
+[node name="Settings Button" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = 45.0
 offset_top = 272.0
@@ -131,8 +171,27 @@ offset_right = 127.0
 offset_bottom = 303.0
 text = "SETTINGS"
 
+[node name="Window" type="Window" parent="Control/Settings Button"]
+transparent_bg = true
+initial_position = 1
+size = Vector2i(360, 170)
+visible = false
+
+[node name="Label" type="Label" parent="Control/Settings Button/Window"]
+offset_left = 110.0
+offset_top = 64.0
+offset_right = 260.0
+offset_bottom = 87.0
+text = "Settings someday..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Menu Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamPlaylist_ow34m")
 volume_db = -1.0
 
 [connection signal="pressed" from="Control/Free Roam Button" to="Control" method="_on_free_roam_button_pressed"]
+[connection signal="pressed" from="Control/Multiplayer button" to="Control" method="_on_multiplayer_button_pressed"]
+[connection signal="close_requested" from="Control/Multiplayer button/Multiplayer Window" to="Control" method="_on_window_close_requested"]
+[connection signal="pressed" from="Control/Settings Button" to="Control" method="_on_settings_button_pressed"]
+[connection signal="close_requested" from="Control/Settings Button/Window" to="Control" method="_on_settings_window_close_requested"]
