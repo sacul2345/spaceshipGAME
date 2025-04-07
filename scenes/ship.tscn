@@ -6,11 +6,11 @@
 [ext_resource type="Script" uid="uid://xdo2blghyipu" path="res://scripts/spaceDust.gd" id="4_anfqm"]
 [ext_resource type="Script" uid="uid://ctl0u3u0xe4v" path="res://scripts/Weapons.gd" id="6_o6kr3"]
 [ext_resource type="Texture2D" uid="uid://dpnxlmbtqty0c" path="res://textures/FOOTAGECRATE-MachingGunMuzzleFlashSide3-prev-full.png" id="7_1luoq"]
-[ext_resource type="AudioStream" uid="uid://wc1b7uiglcao" path="res://gunshot.wav" id="7_03y04"]
-[ext_resource type="AudioStream" uid="uid://cp1fsgr6kdl6p" path="res://engine.wav" id="8_8qiel"]
-[ext_resource type="AudioStream" uid="uid://d1tth2amwplqm" path="res://engine3.wav" id="8_bseor"]
+[ext_resource type="AudioStream" uid="uid://wc1b7uiglcao" path="res://audio/gunshot.wav" id="7_03y04"]
+[ext_resource type="AudioStream" uid="uid://cp1fsgr6kdl6p" path="res://audio/engine.wav" id="8_8qiel"]
+[ext_resource type="AudioStream" uid="uid://d1tth2amwplqm" path="res://audio/engine3.wav" id="8_bseor"]
 [ext_resource type="Script" uid="uid://dts242s7lh2sq" path="res://scripts/ShipAudio.gd" id="9_itrim"]
-[ext_resource type="AudioStream" uid="uid://d11vtihx1nofj" path="res://enginewah.wav" id="11_tlr80"]
+[ext_resource type="AudioStream" uid="uid://d11vtihx1nofj" path="res://audio/enginewah.wav" id="11_tlr80"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8wen1"]
 size = Vector3(5.66, 0.901, 6.976)
@@ -30,12 +30,12 @@ script/source = "extends RayCast3D
 #		#print(targetPos)
 "
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3m36u"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlr80"]
 shading_mode = 0
 albedo_color = Color(0.962546, 0.962546, 0.962546, 1)
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_8qiel"]
-material = SubResource("StandardMaterial3D_3m36u")
+material = SubResource("StandardMaterial3D_tlr80")
 radius = 0.001
 section_length = 0.01
 cap_top = false

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bwsf8pdq64hqx" path="res://scripts/movingCross.gd" id="3_h56q6"]
 
 [node name="Hud" type="CanvasLayer"]
+visible = false
 
 [node name="centerCross" type="TextureRect" parent="."]
 anchors_preset = 8
@@ -13,9 +14,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -1.0
-offset_top = -1.0
+offset_top = -0.999985
 offset_right = 1.0
-offset_bottom = 1.0
+offset_bottom = 1.00002
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3.06, 3.06)
@@ -31,8 +32,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 25.0
-offset_bottom = 25.0
+offset_left = -12.5
+offset_top = -12.5
+offset_right = 12.5
+offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(12.5, 12.5)
@@ -42,3 +45,5 @@ texture = ExtResource("2_m7amk")
 expand_mode = 1
 script = ExtResource("3_h56q6")
 centerCross = NodePath("../centerCross")
+
+[connection signal="tree_entered" from="." to="movingCross" method="_on_hud_tree_entered"]

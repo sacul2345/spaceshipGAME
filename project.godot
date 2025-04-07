@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Spaceship Game"
-run/main_scene="res://scenes/game_area.tscn"
+run/main_scene="uid://cwuq4xsukjck7"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -94,3 +94,4 @@ attack={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

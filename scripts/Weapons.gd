@@ -70,7 +70,7 @@ func hitScan1():
 		drawTracer(gun1.global_position,gun1.global_rotation_degrees,explosionPos)
 		
 		var explosion : Node3D = explosionInstance.instantiate()
-		await get_tree().create_timer(gunDisatnce/BULLETSPEED).timeout
+		await get_tree().create_timer(gunDisatnce/(BULLETSPEED*10)).timeout
 		get_tree().current_scene.add_child(explosion)
 		explosion.position = explosionPos
 	else:
@@ -84,7 +84,7 @@ func hitScan2():
 		drawTracer(gun2.global_position,gun2.global_rotation_degrees,explosionPos)
 		
 		var explosion : Node3D = explosionInstance.instantiate()
-		await get_tree().create_timer(gunDisatnce/BULLETSPEED).timeout
+		await get_tree().create_timer(gunDisatnce/(BULLETSPEED*10)).timeout
 		get_tree().current_scene.add_child(explosion)
 		explosion.position = explosionPos
 	else:

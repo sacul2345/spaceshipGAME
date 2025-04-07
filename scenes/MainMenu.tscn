@@ -1,0 +1,135 @@
+[gd_scene load_steps=14 format=3 uid="uid://cwuq4xsukjck7"]
+
+[ext_resource type="Texture2D" uid="uid://yxxvdpr3hji0" path="res://textures/artplanetskybox.jpg" id="1_ow34m"]
+[ext_resource type="PackedScene" uid="uid://cw6kmw1ilhxi7" path="res://models/spaceshiptest2.glb" id="2_0ykhv"]
+[ext_resource type="Script" uid="uid://dol6mhh2fme11" path="res://models/spaceshiptest_2.gd" id="3_2wh52"]
+[ext_resource type="AudioStream" uid="uid://d1tth2amwplqm" path="res://audio/engine3.wav" id="4_ow34m"]
+[ext_resource type="AudioStream" uid="uid://drvdk5fsuy4el" path="res://audio/music/Cosmic Interlude.mp3" id="5_826wr"]
+[ext_resource type="Script" uid="uid://dm58ccq2xis48" path="res://scenes/Mainmenu.gd" id="5_ucygd"]
+[ext_resource type="AudioStream" uid="uid://co1ullbe4bdli" path="res://audio/music/Inner Guidance.mp3" id="6_ucygd"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0ykhv"]
+panorama = ExtResource("1_ow34m")
+filter = false
+energy_multiplier = 2.0
+
+[sub_resource type="Sky" id="Sky_2wh52"]
+sky_material = SubResource("PanoramaSkyMaterial_0ykhv")
+
+[sub_resource type="Environment" id="Environment_ow34m"]
+background_mode = 2
+sky = SubResource("Sky_2wh52")
+ambient_light_source = 2
+ambient_light_color = Color(0.184314, 0.219608, 0.321569, 1)
+fog_light_color = Color(0.827597, 0.757706, 0.695, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3m36u"]
+shading_mode = 0
+albedo_color = Color(0.962546, 0.962546, 0.962546, 1)
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_0ykhv"]
+material = SubResource("StandardMaterial3D_3m36u")
+radius = 0.001
+section_length = 0.01
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_ow34m"]
+shuffle = true
+fade_time = 1.0
+stream_count = 2
+stream_0 = ExtResource("6_ucygd")
+stream_1 = ExtResource("5_826wr")
+
+[node name="Menu" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ow34m")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.698303, 0, -0.715802, 0, 1, 0, 0.715802, 0, -0.698303, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.53534, 0, 0)
+light_energy = 5.0
+
+[node name="spaceshiptest2" parent="." instance=ExtResource("2_0ykhv")]
+transform = Transform3D(0.990268, -0.139173, 0, 0.139173, 0.990268, 0, 0, 0, 1, 4.77818, -4.61618, 14.8348)
+script = ExtResource("3_2wh52")
+
+[node name="enginehum" type="AudioStreamPlayer3D" parent="spaceshiptest2"]
+transform = Transform3D(0.99022, 0.139519, 0, -0.139519, 0.99022, 0, 0, 0, 1, -4.0874, 5.23768, 0.770836)
+stream = ExtResource("4_ow34m")
+volume_db = 1.0
+pitch_scale = 0.4
+autoplay = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="spaceshiptest2"]
+transform = Transform3D(-0.524953, 0.404191, -0.749036, 0.0737772, 0.898344, 0.433054, 0.847928, 0.172071, -0.501408, -11.4851, 6.27567, -2.13839)
+light_color = Color(0.693229, 0.328853, 0.15179, 1)
+light_energy = 16.0
+spot_range = 21.2236
+
+[node name="spaceDust" type="CPUParticles3D" parent="."]
+transform = Transform3D(0.999997, 0, 0, 0, -4.37112e-08, -0.999995, 0, 0.999995, -4.37112e-08, 2.65457, 3.53281, -39.0414)
+cast_shadow = 0
+ignore_occlusion_culling = true
+gi_mode = 0
+amount = 80
+mesh = SubResource("TubeTrailMesh_0ykhv")
+emission_shape = 2
+emission_sphere_radius = 35.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 150.0
+scale_amount_max = 100.0
+
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("freeRoamButton")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_ucygd")
+freeRoamButton = NodePath("Free Roam Button")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 36.0
+offset_right = 320.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 30
+text = "SPACESHIP GAME ™"
+
+[node name="Free Roam Button" type="Button" parent="Control"]
+layout_mode = 2
+offset_left = 45.0
+offset_top = 172.0
+offset_right = 53.0
+offset_bottom = 180.0
+text = "FREE ROAM"
+
+[node name="Multiplayer button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 222.0
+offset_right = 53.0
+offset_bottom = 230.0
+text = "MULTIPLAYER"
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 272.0
+offset_right = 127.0
+offset_bottom = 303.0
+text = "SETTINGS"
+
+[node name="Menu Music" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPlaylist_ow34m")
+volume_db = -1.0
+autoplay = true
+
+[connection signal="pressed" from="Control/Free Roam Button" to="Control" method="_on_free_roam_button_pressed"]

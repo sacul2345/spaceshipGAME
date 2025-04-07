@@ -1,0 +1,10 @@
+extends Control
+
+@export var freeRoamButton : Button
+var freeRoamScene = load("res://scenes/game_area.tscn")
+
+
+func _on_free_roam_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/game_area.tscn")
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Hud.visible = true

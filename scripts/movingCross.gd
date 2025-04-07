@@ -13,7 +13,8 @@ var centerRad : float
 var arrowAlpha : float
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	pivot_offset = size / 2
+
 
 func _input(_event):
 	if(centerCross != null):
@@ -25,19 +26,10 @@ func _input(_event):
 	
 	axisDistance = crossPos - viewCenter
 	distance = mousePos.distance_to(viewCenter)
-	centerRad = atan2(axisDistance.y + 20,axisDistance.x + 10) #I have no idea why i need to add these random numbers but they center the point where the crosshair orbits
+	centerRad = atan2(axisDistance.y + size.y/2, axisDistance.x + size.x/2)
 	
 	if(distance < 255):
 		self_modulate.a = (distance - 5)/255
 	
-	position = mousePos
+	position = mousePos - size/2
 	rotation = centerRad + PI/2
-	
-	
-	
-	
-	
-	
-	
-	
-	
