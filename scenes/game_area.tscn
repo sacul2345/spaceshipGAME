@@ -28,7 +28,6 @@ fog_light_energy = 0.0
 fog_density = 0.008
 volumetric_fog_density = 0.0015
 adjustment_enabled = true
-adjustment_saturation = 1.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vknq4"]
 

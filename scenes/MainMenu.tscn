@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://yxxvdpr3hji0" path="res://textures/artplanetskybox.jpg" id="1_ow34m"]
 [ext_resource type="PackedScene" uid="uid://cw6kmw1ilhxi7" path="res://models/spaceshiptest2.glb" id="2_0ykhv"]
-[ext_resource type="Script" uid="uid://dol6mhh2fme11" path="res://scripts/Menuship.gd" id="3_2wh52"]
+[ext_resource type="Script" path="res://scripts/Menuship.gd" id="3_2wh52"]
 [ext_resource type="AudioStream" uid="uid://d1tth2amwplqm" path="res://audio/engine3.wav" id="4_ow34m"]
 [ext_resource type="Script" uid="uid://dm58ccq2xis48" path="res://scripts/Mainmenu.gd" id="5_ucygd"]
 [ext_resource type="AudioStream" uid="uid://cg5yyqey55wlk" path="res://audio/music/Inner Guidance.wav" id="6_ucygd"]
@@ -131,7 +131,6 @@ text = "MULTIPLAYER"
 transparent_bg = true
 initial_position = 1
 size = Vector2i(360, 170)
-visible = false
 
 [node name="LAN Host" type="Button" parent="Control/Multiplayer button/Multiplayer Window"]
 offset_left = 15.0
@@ -151,9 +150,9 @@ text = "LAN Join
 [node name="IP INPUT" type="LineEdit" parent="Control/Multiplayer button/Multiplayer Window/LAN Join"]
 layout_mode = 0
 offset_left = 110.0
-offset_top = 13.0
+offset_top = 53.0
 offset_right = 285.0
-offset_bottom = 44.0
+offset_bottom = 84.0
 
 [node name="IP LABEL" type="Label" parent="Control/Multiplayer button/Multiplayer Window/LAN Join/IP INPUT"]
 layout_mode = 0
@@ -163,19 +162,32 @@ offset_right = 100.0
 offset_bottom = 2.0
 text = "IP:"
 
-[node name="IP INPUT2" type="LineEdit" parent="Control/Multiplayer button/Multiplayer Window"]
+[node name="Nane Input" type="LineEdit" parent="Control/Multiplayer button/Multiplayer Window"]
 offset_left = 125.0
-offset_top = 24.0
+offset_top = 67.0
 offset_right = 300.0
-offset_bottom = 55.0
+offset_bottom = 98.0
 
-[node name="IP LABEL" type="Label" parent="Control/Multiplayer button/Multiplayer Window/IP INPUT2"]
+[node name="Name Label" type="Label" parent="Control/Multiplayer button/Multiplayer Window/Nane Input"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = -21.0
 offset_right = 101.0
 offset_bottom = 2.0
 text = "NAME:"
+
+[node name="Port Input" type="LineEdit" parent="Control/Multiplayer button/Multiplayer Window"]
+offset_left = 179.0
+offset_top = 5.0
+offset_right = 300.0
+offset_bottom = 36.0
+
+[node name="Port Label" type="Label" parent="Control/Multiplayer button/Multiplayer Window/Port Input"]
+offset_left = -49.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 26.0
+text = "PORT:"
 
 [node name="Settings Button" type="Button" parent="Control"]
 layout_mode = 0
