@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dfm20dycpgf7y"]
+[gd_scene load_steps=15 format=3 uid="uid://dfm20dycpgf7y"]
 
 [ext_resource type="Script" uid="uid://d3m74lgrscxdv" path="res://scripts/moveShip.gd" id="1_bdwil"]
 [ext_resource type="PackedScene" uid="uid://cmhkcp1a848ww" path="res://scenes/objship.tscn" id="2_3m36u"]
@@ -14,21 +14,6 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8wen1"]
 size = Vector3(5.66, 0.901, 6.976)
-
-[sub_resource type="GDScript" id="GDScript_tlr80"]
-script/source = "extends RayCast3D
-
-#signal hasTarget
-#var targetPos
-
-#func _ready():
-#	targetPos = get_collision_point()
-
-#func _physics_process(_delta):
-#	if is_colliding():
-#		hasTarget.emit()
-#		#print(targetPos)
-"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlr80"]
 shading_mode = 0
@@ -63,11 +48,6 @@ current = true
 script = ExtResource("3_vqv25")
 CAM_WEIGHT = 0.1
 RETURN_SPEED = 0.5
-
-[node name="ViewRayCast" type="RayCast3D" parent="shipBody/ThirdPersonCam"]
-transform = Transform3D(1, -1.87535e-13, 1.57339e-10, -9.34874e-13, 1, 7.38078e-10, 1.32491e-11, -7.36413e-11, 1, 0, 0, 0)
-target_position = Vector3(2.08165e-12, 2.08165e-12, -1000)
-script = SubResource("GDScript_tlr80")
 
 [node name="Weapons" type="Node3D" parent="shipBody" node_paths=PackedStringArray("gunTimer", "gunShot", "muzzleLight")]
 script = ExtResource("6_o6kr3")
