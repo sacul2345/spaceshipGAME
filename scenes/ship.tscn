@@ -99,6 +99,7 @@ light_size = 1.0
 omni_range = 3.886
 
 [node name="spaceDust" type="Node3D" parent="shipBody" node_paths=PackedStringArray("shipRigidBody", "particles")]
+visible = false
 script = ExtResource("4_anfqm")
 shipRigidBody = NodePath("..")
 particles = NodePath("Dust Vector/spaceDust")
