@@ -21,9 +21,14 @@ func _input(_event: InputEvent) -> void:
 
 func _on_free_roam_button_pressed() -> void:
 	menuMusic.playing = false
-	get_tree().change_scene_to_file("res://scenes/game_area.tscn")
+	GameManager.Players[0] = {
+		"name: ": "FREEROAM"
+	}
+	var scene = load("res://scenes/game_area.tscn").instantiate()
+	get_tree().root.add_child(scene)
+	get_parent().queue_free()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	Hud.visible = true
+	Hud.show()
 
 func _on_window_close_requested() -> void:
 	multiplayerWindow.hide()

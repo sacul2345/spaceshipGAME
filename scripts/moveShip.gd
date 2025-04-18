@@ -33,5 +33,7 @@ func _physics_process(delta):
 	if(Input.is_action_pressed("down")): apply_central_impulse(-transform.basis.y)
 	if(Input.is_action_pressed("strafe_Left")): apply_central_impulse(-transform.basis.x)
 	if(Input.is_action_pressed("strafe_Right")): apply_central_impulse(transform.basis.x)
+	
+	
 
 	#print(linear_velocity.length())

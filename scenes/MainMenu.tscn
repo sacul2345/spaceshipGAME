@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cwuq4xsukjck7"]
+[gd_scene load_steps=16 format=3 uid="uid://cwuq4xsukjck7"]
 
 [ext_resource type="Texture2D" uid="uid://yxxvdpr3hji0" path="res://textures/artplanetskybox.jpg" id="1_ow34m"]
 [ext_resource type="PackedScene" uid="uid://cw6kmw1ilhxi7" path="res://models/spaceshiptest2.glb" id="2_0ykhv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c08qarq0qmdjw" path="res://scripts/multiplayer.gd" id="6_mipys"]
 [ext_resource type="AudioStream" uid="uid://cg5yyqey55wlk" path="res://audio/music/Inner Guidance.wav" id="6_ucygd"]
 [ext_resource type="AudioStream" uid="uid://cpaab8ux53uc5" path="res://audio/music/Cosmic Interlude.wav" id="7_mipys"]
+[ext_resource type="AudioStream" uid="uid://bs07bxmbrdlo0" path="res://audio/Outro - John Beltran.wav" id="9_8a8k8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0ykhv"]
 panorama = ExtResource("1_ow34m")
@@ -40,9 +41,10 @@ cap_bottom = false
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_ow34m"]
 shuffle = true
 fade_time = 1.0
-stream_count = 2
+stream_count = 3
 stream_0 = ExtResource("6_ucygd")
 stream_1 = ExtResource("7_mipys")
+stream_2 = ExtResource("9_8a8k8")
 
 [node name="Game" type="Node" node_paths=PackedStringArray("portInput", "nameInput", "menuNode", "ipInput")]
 process_mode = 3
@@ -140,6 +142,7 @@ text = "MULTIPLAYER"
 transparent_bg = true
 initial_position = 1
 size = Vector2i(360, 170)
+visible = false
 script = ExtResource("6_mipys")
 portInput = NodePath("Port Input")
 nameInput = NodePath("Nane Input")
