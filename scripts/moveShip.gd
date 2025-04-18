@@ -17,8 +17,8 @@ func _physics_process(delta):
 	mousePos = (MovingCross.axisDistance)/50
 	arrowDistance = MovingCross.distance
 	rotationVector = Vector3(-mousePos.y,-mousePos.x,0).normalized()
-	yaw = rotationVector.y * MULTIPLIER * delta
-	pitch = rotationVector.x  * MULTIPLIER * delta
+	yaw = clamp(rotationVector.y,-10,10) * MULTIPLIER * delta
+	pitch = clamp(rotationVector.x,-10,10) * MULTIPLIER * delta
 	
 	if(abs(mousePos.x) > DEADZONE or abs(mousePos.y) > DEADZONE): 
 		apply_torque_impulse((transform.basis.x * pitch) * arrowDistance)

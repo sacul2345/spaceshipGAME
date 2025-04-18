@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmhkcp1a848ww"]
+[gd_scene load_steps=2 format=3 uid="uid://cmhkcp1a848ww"]
 
 [ext_resource type="PackedScene" uid="uid://cw6kmw1ilhxi7" path="res://models/spaceshiptest2.glb" id="1_d7djl"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_d7djl"]
-size = Vector3(12.4812, 1.93262, 14.5527)
 
 [node name="Node3D" type="Node3D"]
 
@@ -12,9 +9,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7433, 15.6113)
 light_energy = 2.371
 
 [node name="spaceshiptest2" parent="." instance=ExtResource("1_d7djl")]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1576, 1.93433, 6.77637)
-shape = SubResource("BoxShape3D_d7djl")

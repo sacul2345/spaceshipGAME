@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bncti2a7t877h"]
+[gd_scene load_steps=12 format=3 uid="uid://bncti2a7t877h"]
 
 [ext_resource type="Script" uid="uid://dq06nrbok0mqc" path="res://scenes/SceneManager.gd" id="1_3mx8n"]
 [ext_resource type="Texture2D" uid="uid://dx7vdopsnefgu" path="res://textures/HDR_blue_local_star.jpg" id="2_3mx8n"]
@@ -42,6 +42,9 @@ material = SubResource("StandardMaterial3D_unxed")
 radial_segments = 128
 rings = 64
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3mx8n"]
+size = Vector3(12.4812, 1.93262, 14.5527)
+
 [node name="GameArea" type="Node3D"]
 script = ExtResource("1_3mx8n")
 
@@ -71,6 +74,12 @@ mesh = SubResource("SphereMesh_jd426")
 
 [node name="staticship" parent="." instance=ExtResource("4_3mx8n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.113, 161.663, 139.986)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="staticship"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="staticship/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1576, 1.93433, 6.77637)
+shape = SubResource("BoxShape3D_3mx8n")
 
 [node name="SpawnPoints" type="Node3D" parent="."]
 
