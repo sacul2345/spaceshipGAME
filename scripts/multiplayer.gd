@@ -71,3 +71,7 @@ func _on_start_button_pressed() -> void:
 	if !gameLoaded:
 		loadGame.rpc()
 		gameLoaded = true
+
+
+func _on_theme_button_pressed() -> void:
+	pass # Replace with function body.

@@ -42,3 +42,6 @@ func _on_settings_button_pressed() -> void:
 
 func _on_settings_window_close_requested() -> void:
 	settingsWindow.hide()
+
+func _on_theme_button_pressed() -> void:
+	menuMusic.seek(menuMusic.stream.get_length())

@@ -225,16 +225,22 @@ text = "SETTINGS"
 transparent_bg = true
 initial_position = 1
 size = Vector2i(360, 170)
-visible = false
 
 [node name="Label" type="Label" parent="Menu/Control/Settings Button/Window"]
-offset_left = 110.0
-offset_top = 64.0
-offset_right = 260.0
-offset_bottom = 87.0
+offset_left = 165.0
+offset_top = 105.0
+offset_right = 315.0
+offset_bottom = 128.0
 text = "Settings someday..."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Menu/Control/Settings Button/Window"]
+offset_left = 33.0
+offset_top = 19.0
+offset_right = 163.0
+offset_bottom = 57.0
+text = "Menu Theme"
 
 [node name="Menu Music" type="AudioStreamPlayer" parent="Menu"]
 stream = SubResource("AudioStreamPlaylist_ow34m")
@@ -248,3 +254,4 @@ volume_db = -1.0
 [connection signal="pressed" from="Menu/Control/Multiplayer button/Multiplayer Window/startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Menu/Control/Settings Button" to="Menu/Control" method="_on_settings_button_pressed"]
 [connection signal="close_requested" from="Menu/Control/Settings Button/Window" to="Menu/Control" method="_on_settings_window_close_requested"]
+[connection signal="pressed" from="Menu/Control/Settings Button/Window/Button" to="Menu/Control" method="_on_theme_button_pressed"]
